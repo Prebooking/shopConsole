@@ -1,11 +1,11 @@
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:slotitconsole/Screens/BookingListScreen/BookingListScreen.dart';
 import 'package:slotitconsole/Screens/DashboarScreen/DashBoardScreen.dart';
 
 class SalonDashboard extends StatefulWidget {
-  const SalonDashboard({super.key});
+  int index;
+  SalonDashboard({super.key, this.index = 0});
 
   @override
   State<SalonDashboard> createState() => _SalonDashboardState();
@@ -14,7 +14,16 @@ class SalonDashboard extends StatefulWidget {
 class _SalonDashboardState extends State<SalonDashboard> {
   int _currentIndex = 1;
   bool _isSidebarCollapsed = false;
-  
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _currentIndex = widget.index;
+
+    print(widget.index);
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +43,7 @@ class _SalonDashboardState extends State<SalonDashboard> {
             const Text('SLOTIT'),
           ],
         ),
-        actions: [
-         
-        ],
+        actions: [],
       ),
       body: Row(
         children: [
@@ -62,7 +69,10 @@ class _SalonDashboardState extends State<SalonDashboard> {
           ),
           // Main Content
           Expanded(
-            child: (_currentIndex == 0) ?  DashBoardScreen() :BookingHistoryScreen()
+            child:
+                (_currentIndex == 0)
+                    ? DashBoardScreen()
+                    : BookingHistoryScreen(),
           ),
         ],
       ),
@@ -71,16 +81,23 @@ class _SalonDashboardState extends State<SalonDashboard> {
 
   Widget _buildNavItem(String title, IconData icon, int index) {
     return ListTile(
-      leading: Icon(icon, color: _currentIndex == index ? Colors.blue : Colors.grey[600]),
-      title: _isSidebarCollapsed
-          ? null
-          : Text(
-              title,
-              style: TextStyle(
-                color: _currentIndex == index ? Colors.blue : Colors.black,
-                fontWeight: _currentIndex == index ? FontWeight.bold : FontWeight.normal,
+      leading: Icon(
+        icon,
+        color: _currentIndex == index ? Colors.blue : Colors.grey[600],
+      ),
+      title:
+          _isSidebarCollapsed
+              ? null
+              : Text(
+                title,
+                style: TextStyle(
+                  color: _currentIndex == index ? Colors.blue : Colors.black,
+                  fontWeight:
+                      _currentIndex == index
+                          ? FontWeight.bold
+                          : FontWeight.normal,
+                ),
               ),
-            ),
       selected: _currentIndex == index,
       onTap: () {
         setState(() {
@@ -89,6 +106,4 @@ class _SalonDashboardState extends State<SalonDashboard> {
       },
     );
   }
-
-  
 }

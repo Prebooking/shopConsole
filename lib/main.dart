@@ -28,8 +28,12 @@ class SalonDashboardApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const SalonDashboard(),
+      // routes: {
+      //   "/analytics": (context) => SalonDashboard(index: 1),
+      //   "/": (context) => SalonDashboard(index: 0),
+      // },
+      // initialRoute: "/",
+      home: SalonDashboard(),
     );
   }
 }
-
