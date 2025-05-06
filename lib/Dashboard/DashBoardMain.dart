@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:slotitconsole/Screens/Analytics/Analyticsmain.dart';
 import 'package:slotitconsole/Screens/BookingListScreen/BookingListScreen.dart';
 import 'package:slotitconsole/Screens/DashboarScreen/DashBoardScreen.dart';
+import 'package:slotitconsole/Screens/Room/roommain.dart';
 
 class SalonDashboard extends StatefulWidget {
   int index;
@@ -71,7 +73,8 @@ class _SalonDashboardState extends State<SalonDashboard> {
           Expanded(
             child:
                 (_currentIndex == 0)
-                    ? DashBoardScreen()
+                    ?Roommain()
+                  
                     : BookingHistoryScreen(),
           ),
         ],
