@@ -1,28 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:slotitconsole/Screens/Room/views/roomtable.dart';
+import 'package:slotitconsole/Screens/StaffScreens/views/staffcard.dart';
 
-class Roommain extends StatelessWidget {
-  const Roommain({super.key});
+class StaffMainScreen extends StatelessWidget {
+  const StaffMainScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return 
-    LayoutBuilder(builder: (context,Constraints){
-     int count=1;
-     if(Constraints.maxWidth>=1000){
-      count=4;
-     }
-     else if(Constraints.maxWidth>800){
-      count=3;
-     }
-     else if(Constraints.maxWidth>600){
-      count=2;
-     }
-     else {
-      count=1;
-     }
-     return Padding(
+ 
+     Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
         children: [
@@ -31,7 +19,7 @@ class Roommain extends StatelessWidget {
               Column(
                 children: [
                     Text(
-                        "Shop Room",
+                        "Shop Staffs",
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                               fontWeight: FontWeight.bold,
                             ),
@@ -48,7 +36,7 @@ class Roommain extends StatelessWidget {
                           ),
                           Icon(Icons.chevron_right, size: 16, color: Colors.grey),
                            Text(
-                            'Room',
+                            'Staffs',
                             style: TextStyle(
                                 color: Colors.grey,
                                 fontSize: 12,
@@ -58,7 +46,7 @@ class Roommain extends StatelessWidget {
                       )
                 ],
               ),
-              Expanded(child: Container()),
+             const Spacer(),
                    ElevatedButton.icon(onPressed: (){},
                     icon: const Icon(Icons.add,color: Colors.grey,),
                     label: Text('Add Service',style: TextStyle(color: Colors.grey),),
@@ -78,19 +66,14 @@ class Roommain extends StatelessWidget {
       
       Expanded(
         child: GridView.builder(
-          itemCount: 6,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: count,
-          crossAxisSpacing: 30,
-                  mainAxisSpacing: 30,
-                  childAspectRatio: 4 / 3.5,
-                  ), itemBuilder: (context, index) {
-                  return RoomCard(
-                    imageUrl: 'https://th.bing.com/th/id/OIP.zhXbmHtkW0vqrzWVtWumZAHaE0?w=287&h=187&c=7&r=0&o=7&cb=iwp1&dpr=1.3&pid=1.7&rm=3',
-                    roomName: 'Room Name',
-                    description: 'Description',
-                    staffCount: 0,
-                    status: 'Active',
-                  );
+        
+          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent( maxCrossAxisExtent: 200,
+    mainAxisExtent: 260,
+    crossAxisSpacing: 20,
+    mainAxisSpacing: 20,
+                  ), itemCount: 6,
+                  itemBuilder: (context, index) {
+                  return Staffcard(name: "Nandana S I", phone: "7736204597", imageUrl: "", isSelected: false, isActive: true);
                 },),
       )
         ],
@@ -100,8 +83,7 @@ class Roommain extends StatelessWidget {
     
     );
 
-    }
-    );
+  
   }
 }
 

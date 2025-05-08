@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:slotitconsole/Screens/Analytics/Analyticsmain.dart';
 import 'package:slotitconsole/Screens/BookingListScreen/BookingListScreen.dart';
+import 'package:slotitconsole/Screens/BookingListScreen/Views/BookingTableView.dart';
 import 'package:slotitconsole/Screens/DashboarScreen/DashBoardScreen.dart';
 import 'package:slotitconsole/Screens/Room/roommain.dart';
+import 'package:slotitconsole/Screens/ServiceScreens/Servicescreenmain.dart';
+import 'package:slotitconsole/Screens/StaffScreens/StaffMainScreen.dart';
 
 class SalonDashboard extends StatefulWidget {
   int index;
@@ -60,7 +63,7 @@ class _SalonDashboardState extends State<SalonDashboard> {
                 _buildNavItem('Dashboard', Icons.dashboard, 0),
                 _buildNavItem('Analytics', Icons.analytics, 1),
                 _buildNavItem('Booking', Icons.calendar_today, 2),
-                _buildNavItem('Specialist', Icons.person, 3),
+                _buildNavItem('Rooms', Icons.person, 3),
                 _buildNavItem('Services', Icons.spa, 4),
                 _buildNavItem('Staff', Icons.people, 5),
                 const Divider(),
@@ -70,13 +73,27 @@ class _SalonDashboardState extends State<SalonDashboard> {
             ),
           ),
           // Main Content
-          Expanded(
-            child:
-                (_currentIndex == 0)
-                    ?Roommain()
-                  
-                    : BookingHistoryScreen(),
-          ),
+        Expanded(
+  child: Builder(
+    builder: (context) {
+      switch (_currentIndex) {
+        case 0:
+          return DashBoardScreen();
+        case 1:
+          return AnalyticScreen();
+        case 2:
+          return BookingHistoryTable(); // Replace with your screen
+        case 3:
+          return Roommain();       // Replace with your screen
+        case 4:
+          return ServiceMainScreen();      // Replace with your screen
+        default:
+          return StaffMainScreen();
+      }
+    },
+  ),
+),
+
         ],
       ),
     );
