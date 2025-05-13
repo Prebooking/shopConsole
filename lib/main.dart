@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:slotitconsole/Dashboard/DashBoardMain.dart';
+import 'package:slotitconsole/Screens/Authentication/authentication.dart';
 
 void main() {
   runApp(const SalonDashboardApp());
@@ -33,7 +34,7 @@ class SalonDashboardApp extends StatelessWidget {
       //   "/": (context) => SalonDashboard(index: 0),
       // },
       // initialRoute: "/",
-      home: SalonDashboard(),
+      home: AuthenticationScreen(),
     );
   }
 }
